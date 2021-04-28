@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import * as API from "./utils/API";
+import React, { useState, useEffect } from "react";
+import EmployeeCard from "./components/EmployeeCard";
+import Title from "./components/Title";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  useEffect(() => {
+
+    return (
+      <>
+        <Title>Employee Directory</Title>
+        <div className="card">
+          <table className="table table-striped ">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody className="tableRow content">
+            </tbody>
+          </table >
+        </div >
+      </>
+    );
+
+  })
 }
 
 export default App;
