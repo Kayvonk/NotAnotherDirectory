@@ -5,9 +5,11 @@ import EmployeeCard from "./components/EmployeeCard";
 import Title from "./components/Title";
 import SearchForm from "./components/SearchForm";
 
-
 function App() {
   const [employees, setEmployees] = useState([]);
+  const [fieldToSort, setFieldToSort] = useState('name.first');
+  const [sortOrder, setSortOrder] = useState(-1);
+  const [nameFilter, setNameFilter] = useState("");
 
   useEffect(() => {
     API.getPeople()
@@ -20,6 +22,23 @@ function App() {
       })))
       .then(setEmployees);
   }, []);
+  const nameFilterRegExp = new RegExp(nameFilter, "i")
+  const getField = (employee) => {
+    switch (fieldToSort) {
+      case "name.first":
+        return employee.name.first
+      case "name.last":
+        return employee.name.last
+      default:
+        return employee[fieldToSort]
+    }
+  }
+  const updateSort = (field) => {
+    if (fieldToSort === field) {
+      setSortOrder(-sortOrder)
+    }
+    else setFieldToSort(field)
+  }
 
   return (
     <>
@@ -29,21 +48,32 @@ function App() {
         <table className="table table-striped ">
           <thead>
             <tr>
-              <th>Name</th>
+              <th onClick={() => updateSort("name.first")}>Name</th>
               <th>Image</th>
               <th>Phone Number</th>
-              <th>Email</th>
+              <th onClick={() => updateSort("email")}>Email</th>
             </tr>
           </thead>
           <tbody className="tableRow content">
-            {employees.map(employee => (
-              <EmployeeCard
-                name={employee.name.first + " " + employee.name.last}
-                image={employee.image}
-                phoneNumber={employee.phone}
-                email={employee.email}
-              />
-            ))}
+            {employees.sort((employeeA, employeeB) => {
+              const a = getField(employeeA)
+              const b = getField(employeeB)
+              if (a < b) {
+                return sortOrder
+              }
+              if (a > b) {
+                return -sortOrder
+              }
+              return 0
+            })
+              .map(employee => (
+                <EmployeeCard
+                  name={employee.name.first + " " + employee.name.last}
+                  image={employee.image}
+                  phoneNumber={employee.phone}
+                  email={employee.email}
+                />
+              ))}
           </tbody>
         </table >
       </div >
