@@ -58,7 +58,8 @@ function App() {
             {employees
               .filter((employee) =>
                 nameFilterRegExp.test(employee.name.first) ||
-                nameFilterRegExp.test(employee.name.last)
+                nameFilterRegExp.test(employee.name.last) ||
+                nameFilterRegExp.test(employee.email)
               ).sort((employeeA, employeeB) => {
                 const a = getField(employeeA)
                 const b = getField(employeeB)
