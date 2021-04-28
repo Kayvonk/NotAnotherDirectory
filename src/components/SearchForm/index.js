@@ -9,16 +9,18 @@ function SearchForm({ setNameFilter }) {
         console.log(event.target.value)
     }
     return (
-        <div className="form-group searchDiv">
-            <input
-                type="text"
-                onChange={handleOnChange}
-                name="search"
-                list="term"
-                className="form-control"
-                placeholder="Search by first or last name"
-                id="term"
-            />
+        <div class="container-fluid">
+            <div className="form-group searchDiv">
+                <input
+                    type="text"
+                    onChange={handleOnChange}
+                    name="search"
+                    list="term"
+                    className="form-control"
+                    placeholder="Search by name or email"
+                    id="term"
+                />
+            </div>
         </div>
     );
 }

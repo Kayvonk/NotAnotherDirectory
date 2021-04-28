@@ -44,43 +44,45 @@ function App() {
     <>
       <Title>Employee Directory</Title>
       <SearchForm setNameFilter={setNameFilter} />
-      <div className="card">
-        <table className="table table-striped ">
-          <thead>
-            <tr>
-              <th onClick={() => updateSort("name.first")}>Name</th>
-              <th>Image</th>
-              <th>Phone Number</th>
-              <th onClick={() => updateSort("email")}>Email</th>
-            </tr>
-          </thead>
-          <tbody className="tableRow content">
-            {employees
-              .filter((employee) =>
-                nameFilterRegExp.test(employee.name.first) ||
-                nameFilterRegExp.test(employee.name.last) ||
-                nameFilterRegExp.test(employee.email)
-              ).sort((employeeA, employeeB) => {
-                const a = getField(employeeA)
-                const b = getField(employeeB)
-                if (a < b) {
-                  return sortOrder
-                }
-                if (a > b) {
-                  return -sortOrder
-                }
-                return 0
-              })
-              .map(employee => (
-                <EmployeeCard
-                  name={employee.name.first + " " + employee.name.last}
-                  image={employee.image}
-                  phoneNumber={employee.phone}
-                  email={employee.email}
-                />
-              ))}
-          </tbody>
-        </table >
+      <div className="card container-fluid">
+        <div className="table-responsive">
+          <table className="table table-striped ">
+            <thead>
+              <tr>
+                <th onClick={() => updateSort("name.first")}>Name</th>
+                <th>Image</th>
+                <th>Phone Number</th>
+                <th onClick={() => updateSort("email")}>Email</th>
+              </tr>
+            </thead>
+            <tbody className="tableRow content">
+              {employees
+                .filter((employee) =>
+                  nameFilterRegExp.test(employee.name.first) ||
+                  nameFilterRegExp.test(employee.name.last) ||
+                  nameFilterRegExp.test(employee.email)
+                ).sort((employeeA, employeeB) => {
+                  const a = getField(employeeA)
+                  const b = getField(employeeB)
+                  if (a < b) {
+                    return sortOrder
+                  }
+                  if (a > b) {
+                    return -sortOrder
+                  }
+                  return 0
+                })
+                .map(employee => (
+                  <EmployeeCard
+                    name={employee.name.first + " " + employee.name.last}
+                    image={employee.image}
+                    phoneNumber={employee.phone}
+                    email={employee.email}
+                  />
+                ))}
+            </tbody>
+          </table >
+        </div>
       </div >
     </>
   );
