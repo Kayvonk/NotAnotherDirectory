@@ -43,7 +43,7 @@ function App() {
   return (
     <>
       <Title>Employee Directory</Title>
-      <SearchForm />
+      <SearchForm setNameFilter={setNameFilter} />
       <div className="card">
         <table className="table table-striped ">
           <thead>
@@ -55,17 +55,21 @@ function App() {
             </tr>
           </thead>
           <tbody className="tableRow content">
-            {employees.sort((employeeA, employeeB) => {
-              const a = getField(employeeA)
-              const b = getField(employeeB)
-              if (a < b) {
-                return sortOrder
-              }
-              if (a > b) {
-                return -sortOrder
-              }
-              return 0
-            })
+            {employees
+              .filter((employee) =>
+                nameFilterRegExp.test(employee.name.first) ||
+                nameFilterRegExp.test(employee.name.last)
+              ).sort((employeeA, employeeB) => {
+                const a = getField(employeeA)
+                const b = getField(employeeB)
+                if (a < b) {
+                  return sortOrder
+                }
+                if (a > b) {
+                  return -sortOrder
+                }
+                return 0
+              })
               .map(employee => (
                 <EmployeeCard
                   name={employee.name.first + " " + employee.name.last}
@@ -81,6 +85,5 @@ function App() {
   );
 
 }
-
 
 export default App;
