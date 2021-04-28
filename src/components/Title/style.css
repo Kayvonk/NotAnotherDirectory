@@ -3,8 +3,10 @@
   padding: 5rem;
   text-align: center;
   font-size: 3rem;
-  text-decoration: underline;
-  color: #cac8c8;
+  font-family:initial;
+  color: #e2e2e2;
   background: rgb(51, 64, 126);
   margin-bottom: 50px;
+  border-bottom: 10px solid rgb(15, 140, 160);
+
 }
