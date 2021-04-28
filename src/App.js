@@ -3,6 +3,7 @@ import * as API from "./utils/API";
 import React, { useState, useEffect } from "react";
 import EmployeeCard from "./components/EmployeeCard";
 import Title from "./components/Title";
+import SearchForm from "./components/SearchForm";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   return (
     <>
       <Title>Employee Directory</Title>
+      <SearchForm />
       <div className="card">
         <table className="table table-striped ">
           <thead>
