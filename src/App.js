@@ -5,6 +5,9 @@ import EmployeeCard from "./components/EmployeeCard";
 import Title from "./components/Title";
 import SearchForm from "./components/SearchForm";
 
+import { faSort } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 function App() {
   const [employees, setEmployees] = useState([]);
   const [fieldToSort, setFieldToSort] = useState('name.first');
@@ -49,10 +52,10 @@ function App() {
           <table className="table table-striped ">
             <thead>
               <tr>
-                <th onClick={() => updateSort("name.first")}>Name</th>
+                <th onClick={() => updateSort("name.first")}>Name  <FontAwesomeIcon icon={faSort} /></th>
                 <th>Image</th>
                 <th>Phone Number</th>
-                <th onClick={() => updateSort("email")}>Email</th>
+                <th onClick={() => updateSort("email")}>Email <FontAwesomeIcon icon={faSort} /></th>
               </tr>
             </thead>
             <tbody className="tableRow content">

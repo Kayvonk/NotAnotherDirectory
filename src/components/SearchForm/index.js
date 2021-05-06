@@ -9,7 +9,7 @@ function SearchForm({ setNameFilter }) {
         console.log(event.target.value)
     }
     return (
-        <div class="container-fluid">
+        <div className="container-fluid">
             <div className="form-group searchDiv">
                 <input
                     type="text"
