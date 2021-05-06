@@ -21,7 +21,7 @@ To utilize this application, run npm start in your terminal or command prompt. T
 
 Deployed application: https://kayvonk.github.io/NotAnotherDirectory/
 
-![notAnotherDirectoryThumbnail](./assets/notAnotherDirectoryThumbnail.PNG)
+![EmployeeDirectoryThumbnail](./assets/employeedirectorythumbnail.PNG)
 
 ## Credits
 Random User Generator is an open-source API which was utilized in this webpage. 
